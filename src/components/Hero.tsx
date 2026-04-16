@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -12,8 +12,8 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="/images/exterior.jpg" 
-          alt="Bow Bells Coffee House"
+          src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&q=80" 
+          alt="Pier 36 Steakhouse"
           className="w-full h-full object-cover"
         />
         <div className="hero-overlay absolute inset-0" />
@@ -24,41 +24,41 @@ export default function Hero() {
         loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}>
         {/* Award Badge */}
-        <div className="inline-flex items-center gap-2 bg-[#169B62]/90 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+        <div className="inline-flex items-center gap-2 bg-[#722F37]/90 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          <svg viewBox="0 0 24 24" fill="#D4AF37" className="w-4 h-4">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
           </svg>
-          Double Irish Food Award Winners
+          Ireland's Finest Dry-Aged Steaks
         </div>
 
         {/* Main Headline */}
         <h1 className="font-playfair text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">
-          Award-Winning
+          Pier 36
           <br />
-          <span className="text-[#F5F0E8]/90">Coffee House & Bakery</span>
+          <span className="text-[#D4AF37]">Steakhouse</span>
         </h1>
 
-        {/* Subtitle with ownership */}
+        {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/80 mb-2">
-          Serving Donaghadee since 1975
+          Quayside Dining in Donaghadee
         </p>
         <p className="text-base text-white/60 mb-8">
-          Family-owned since 2020 • Fresh baked daily, loved by generations
+          Established 1999 • 28-day dry-aged steaks • Fresh local seafood
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
-            href="#order"
+            href="#reservations"
             className="px-8 py-4 bg-[#C17817] text-white font-semibold rounded-lg hover:bg-[#A06314] transition-all hover:-translate-y-1 hover:shadow-xl text-lg"
           >
-            Order Online
+            Reserve Your Table
           </a>
           <a 
-            href="#visit"
-            className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#3D2314] transition-all text-lg"
+            href="#menu"
+            className="px-8 py-4 border-2 border-[#D4AF37] text-[#D4AF37] font-semibold rounded-lg hover:bg-[#D4AF37] hover:text-[#0D0D0D] transition-all text-lg"
           >
-            Visit Us
+            View Menu
           </a>
         </div>
       </div>

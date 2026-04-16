@@ -1,24 +1,26 @@
 ---
-import '../styles/global.css';
-
 interface Props {
   title: string;
-  description?: string;
 }
 
-const { title, description = "Award-winning coffee house and bakery in Donaghadee since 1975. Irish Food Award winners for our famous sausage rolls and granola." } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="Pier 36 Steakhouse - Ireland's finest dry-aged steaks, fresh local seafood, and warm hospitality on the quayside in Donaghadee since 1999." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | Bow Bells Coffee</title>
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
   </head>
-  <body class="antialiased">
+  <body class="bg-[#0D0D0D]">
     <slot />
   </body>
 </html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

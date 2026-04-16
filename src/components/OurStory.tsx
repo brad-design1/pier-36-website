@@ -22,54 +22,55 @@ export default function OurStory() {
   }, []);
 
   return (
-    <section id="our-story" className="py-24 bg-[#F5F0E8]" ref={ref}>
+    <section id="the-story" className="py-24 bg-[#1A1A1A]" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <div className={`grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${
           visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}>
           {/* Image */}
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl warm-overlay">
+          <div className="relative order-2 lg:order-1">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800"
-                alt="Bow Bells Interior"
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
+                alt="Pier 36 Interior"
                 className="w-full h-[500px] object-cover"
               />
+              <div className="aging-overlay absolute inset-0" />
             </div>
             {/* Floating badge */}
-            <div className="absolute -bottom-6 -right-6 bg-[#C17817] text-white px-6 py-4 rounded-xl shadow-xl">
-              <span className="font-caveat text-3xl">Since 1975</span>
+            <div className="absolute -bottom-6 -left-6 bg-[#C17817] text-white px-6 py-4 rounded-xl shadow-xl">
+              <span className="font-caveat text-3xl">Since 1999</span>
             </div>
           </div>
 
           {/* Content */}
-          <div>
-            <span className="text-[#C17817] font-semibold text-sm tracking-wider uppercase">
+          <div className="order-1 lg:order-2">
+            <span className="text-[#D4AF37] font-semibold text-sm tracking-wider uppercase">
               Our Story
             </span>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#3D2314] mt-3 mb-6">
-              A Heritage of
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mt-3 mb-6">
+              A Quarter Century of
               <br />
-              Baking Excellence
+              <span className="text-[#D4AF37]">Culinary Excellence</span>
             </h2>
             
-            <p className="text-[#6B5B4F] text-lg mb-6 leading-relaxed">
-              Since 1975, Bow Bells has been at the heart of Donaghadee, serving our community 
-              with freshly baked goods and exceptional coffee. What started as a small family 
-              bakery has grown into a beloved institution.
+            <p className="text-[#F5F0E8]/70 text-lg mb-6 leading-relaxed">
+              For nearly 25 years, Pier 36 has been the heart of Donaghadee's dining scene. 
+              Founded in 1999 by the Waterworth family, our quayside pub has become synonymous 
+              with exceptional steaks, fresh seafood, and warm hospitality.
             </p>
 
-            <p className="text-[#6B5B4F] text-lg mb-8 leading-relaxed">
-              In 2020, the Waterworth family took the helm, bringing new energy while carefully 
-              preserving the traditions that made Bow Bells special. We believe great baking 
-              shouldn't cost a fortune—that's why we've kept our prices fair for nearly 50 years.
+            <p className="text-[#F5F0E8]/70 text-lg mb-8 leading-relaxed">
+              Our intimate setting overlooks the harbor, where the fishing boats bring in 
+              the day's catch. Every steak is dry-aged in our on-site aging room, and every 
+              dish is prepared with the same dedication that earned us recognition as home 
+              to Ireland's finest steaks.
             </p>
 
             {/* Quote */}
-            <blockquote className="border-l-4 border-[#C17817] pl-6 py-2">
-              <p className="font-playfair text-xl italic text-[#3D2314]">
-                "Meticulously restored to its original splendor, with the same heart and soul 
-                that's been here for nearly 50 years."
+            <blockquote className="border-l-4 border-[#D4AF37] pl-6 py-2">
+              <p className="font-playfair text-xl italic text-[#F5F0E8]">
+                "Where tradition meets the pinnacle of culinary craftsmanship."
               </p>
             </blockquote>
           </div>

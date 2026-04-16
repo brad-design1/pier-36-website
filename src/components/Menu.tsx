@@ -5,140 +5,176 @@ interface MenuItem {
   description: string;
   price: string;
   image: string;
-  award?: boolean;
-  origin?: string;
+  premium?: boolean;
+  pairing?: string;
 }
 
 export default function Menu() {
-  const [activeTab, setActiveTab] = useState('all');
-  const [cart, setCart] = useState<string[]>([]);
+  const [activeCategory, setActiveCategory] = useState('steaks');
 
-  const menuItems: MenuItem[] = [
-    {
-      name: 'Sausage Roll',
-      description: 'Our famous award-winning recipe. Flaky pastry, seasoned pork sausage.',
-      price: '£3.50',
-      image: '/images/sausage-rolls.jpg',
-      award: true,
-      origin: 'Made fresh daily with locally sourced pork from County Down farms'
-    },
-    {
-      name: 'Homemade Granola',
-      description: 'Served with fresh yogurt and seasonal berries. Irish Food Award winner.',
-      price: '£5.95',
-      image: 'https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400',
-      award: true,
-      origin: 'Rolled oats from MacNeans Mill, Belturbet, with honey from local apiaries'
-    },
-    {
-      name: 'Artisanal Sourdough',
-      description: 'Traditional slow-fermented sourdough, baked fresh every morning.',
-      price: '£4.50',
-      image: 'https://images.unsplash.com/photo-1585476263060-b7a6f71dbd7d?w=400',
-      origin: '48-hour fermented with our 5-year-old starter, stone-baked'
-    },
-    {
-      name: 'Irish Wheaten Bread',
-      description: 'Traditional recipe with treacle and buttermilk. Perfect toasted.',
-      price: '£3.95',
-      image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400',
-      origin: 'Made with coarse wholemeal flour from Andrews Flour, Belfast'
-    },
-    {
-      name: 'Scones (Plain or Fruit)',
-      description: 'Light and fluffy, served warm with butter and jam.',
-      price: '£2.95',
-      image: 'https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?w=400',
-      origin: 'Baked throughout the day, always warm'
-    },
-    {
-      name: 'Traybakes & Shortbread',
-      description: 'Selection of daily homemade treats. Ask what\'s fresh today.',
-      price: 'from £2.50',
-      image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400',
-      origin: 'Traditional recipes passed down through generations'
-    }
+  const categories = [
+    { id: 'steaks', label: 'Dry-Aged Steaks' },
+    { id: 'seafood', label: 'Fresh Seafood' },
+    { id: 'sides', label: 'Sides & Sauces' },
   ];
 
-  const addToCart = (itemName: string) => {
-    setCart([...cart, itemName]);
+  const menuItems: Record<string, MenuItem[]> = {
+    steaks: [
+      {
+        name: '28-Day Aged Ribeye',
+        description: 'Our signature cut. Rich marbling, exceptional flavor. Served with roasted garlic butter.',
+        price: '£38',
+        image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&q=80',
+        premium: true,
+        pairing: 'Pairs with: Malbec or Cabernet Sauvignon'
+      },
+      {
+        name: 'Filet Mignon',
+        description: 'The most tender cut. Lean, buttery-soft texture. Perfect for those who prefer a milder flavor.',
+        price: '£42',
+        image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=400&q=80',
+        premium: true,
+        pairing: 'Pairs with: Pinot Noir or Merlot'
+      },
+      {
+        name: 'New York Strip',
+        description: 'Bold, beefy flavor with a satisfying chew. The steak lover\'s classic.',
+        price: '£35',
+        image: 'https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400&q=80',
+        pairing: 'Pairs with: Shiraz or Zinfandel'
+      },
+      {
+        name: 'T-Bone',
+        description: 'Two steaks in one—the tenderloin and strip, separated by the iconic T-bone.',
+        price: '£45',
+        image: 'https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?w=400&q=80',
+        pairing: 'Pairs with: Bordeaux or Rioja'
+      }
+    ],
+    seafood: [
+      {
+        name: 'Fresh Catch of the Day',
+        description: 'Locally caught, prepared simply to let the natural flavors shine. Ask your server for today\'s catch.',
+        price: 'Market Price',
+        image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&q=80',
+        pairing: 'Pairs with: Sauvignon Blanc or Chablis'
+      },
+      {
+        name: 'Pan-Seared Scallops',
+        description: 'Diver-caught scallops, golden-seared, served with cauliflower purée and crispy pancetta.',
+        price: '£28',
+        image: 'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?w=400&q=80',
+        pairing: 'Pairs with: Chardonnay or Champagne'
+      },
+      {
+        name: 'Grilled Lobster Tail',
+        description: 'Cold-water lobster, grilled with garlic butter. Served with seasonal vegetables.',
+        price: '£48',
+        image: 'https://images.unsplash.com/photo-1553247407-23251ce81f59?w=400&q=80',
+        premium: true,
+        pairing: 'Pairs with: Champagne or White Burgundy'
+      }
+    ],
+    sides: [
+      {
+        name: 'Truffle Parmesan Fries',
+        description: 'Hand-cut potatoes, truffle oil, aged Parmesan.',
+        price: '£8',
+        image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80'
+      },
+      {
+        name: 'Creamed Spinach',
+        description: 'Fresh spinach in a rich cream sauce with nutmeg.',
+        price: '£6',
+        image: 'https://images.unsplash.com/photo-1515616238870-1a0d43f8d42d?w=400&q=80'
+      },
+      {
+        name: 'Roasted Bone Marrow',
+        description: 'Served with toasted sourdough and parsley salad.',
+        price: '£12',
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=80'
+      },
+      {
+        name: 'Béarnaise Sauce',
+        description: 'Classic French sauce with tarragon and shallots.',
+        price: '£4',
+        image: 'https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=400&q=80'
+      }
+    ]
   };
 
   return (
-    <section id="menu" className="py-24 bg-[#E8E0D4]">
+    <section id="menu" className="py-24 bg-[#0D0D0D]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-[#C17817] font-semibold text-sm tracking-wider uppercase">
+        <div className="text-center mb-12">
+          <span className="text-[#D4AF37] font-semibold text-sm tracking-wider uppercase">
             Our Menu
           </span>
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#3D2314] mt-3">
-            Baked Fresh Every Morning
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mt-3">
+            The Finest Ingredients
           </h2>
-          <p className="text-[#6B5B4F] mt-4 text-lg max-w-2xl mx-auto">
-            Everything made daily in our bakery. From award-winning favorites to daily specials.
+          <p className="text-[#F5F0E8]/60 mt-4 text-lg max-w-2xl mx-auto">
+            Every dish crafted with passion. Steaks aged on-site, seafood caught locally.
           </p>
         </div>
 
-        {/* Magazine-style Menu Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {menuItems.map((item, i) => (
+        {/* Category Tabs */}
+        <div className="flex justify-center gap-4 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                activeCategory === cat.id
+                  ? 'bg-[#C17817] text-white'
+                  : 'bg-[#1A1A1A] text-[#F5F0E8]/70 hover:text-white'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Menu Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {menuItems[activeCategory].map((item, i) => (
             <article 
               key={i}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg card-lift"
+              className="group bg-[#1A1A1A] rounded-2xl overflow-hidden shadow-lg card-lift flex"
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden warm-overlay img-hover-zoom">
+              <div className="relative w-40 h-40 flex-shrink-0 overflow-hidden">
                 <img 
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {item.award && (
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-[#169B62] text-white px-3 py-1.5 rounded-full text-xs font-bold">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    Award Winner
+                {item.premium && (
+                  <div className="absolute top-2 left-2 flex items-center gap-1 bg-[#D4AF37] text-[#0D0D0D] px-2 py-1 rounded text-xs font-bold">
+                    Premium
                   </div>
                 )}
-                {/* Fresh timestamp */}
-                <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-medium text-[#3D2314]">
-                  <span className="w-2 h-2 bg-[#169B62] rounded-full pulse-dot" />
-                  Baked today at 6am
-                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-playfair text-xl font-semibold text-[#3D2314]">
+              <div className="p-6 flex-1 flex flex-col">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-playfair text-xl font-semibold text-white">
                     {item.name}
                   </h3>
-                  <span className="text-xl font-bold text-[#C17817]">{item.price}</span>
+                  <span className="text-xl font-bold text-[#D4AF37] ml-4">{item.price}</span>
                 </div>
                 
-                <p className="text-[#6B5B4F] text-sm mb-4 leading-relaxed">
+                <p className="text-[#F5F0E8]/60 text-sm mb-auto">
                   {item.description}
                 </p>
 
-                {/* Origin story */}
-                {item.origin && (
-                  <p className="text-xs text-[#6B5B4F]/70 italic mb-4 border-t border-[#E8E0D4] pt-3">
-                    {item.origin}
+                {item.pairing && (
+                  <p className="text-xs text-[#722F37] mt-3 italic">
+                    {item.pairing}
                   </p>
                 )}
-
-                {/* Add to cart */}
-                <button 
-                  onClick={() => addToCart(item.name)}
-                  className="w-full py-3 bg-[#C17817] text-white font-semibold rounded-lg hover:bg-[#A06314] transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  Add to Order
-                </button>
               </div>
             </article>
           ))}
@@ -148,7 +184,7 @@ export default function Menu() {
         <div className="text-center mt-12">
           <a 
             href="#"
-            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#3D2314] text-[#3D2314] font-semibold rounded-lg hover:bg-[#3D2314] hover:text-white transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#D4AF37] text-[#D4AF37] font-semibold rounded-lg hover:bg-[#D4AF37] hover:text-[#0D0D0D] transition-all"
           >
             View Full Menu
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
